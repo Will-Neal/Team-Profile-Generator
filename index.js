@@ -1,6 +1,112 @@
+//Importing necessary modules
 const fs = require("fs");
-var inquirer = require("inquirer");
+const inquirer = require("inquirer");
 
+//Question arrays for enquirer
+const managerQuestions = [
+    {
+        name: "name",
+        type: "input",
+        message: "Enter the team manager's name:"
+    },
+    ,
+    {
+        name: "id",
+        type: "input",
+        message: "What is their employee ID?",
+    },
+    {
+        name: "email",
+        type: "input",
+        message: "What is their email?",
+    },
+    {
+        name: "office",
+        type: "input",
+        message: "What is their office number?"
+    },
+]
+
+const menuQuestion = [
+    {
+        name: "employee",
+        type: "list",
+        message: "what type of employee would you like to add?",
+        choices = ["Engineer", "Intern", "None"]
+    }
+]
+
+const engineerQuestions = [
+    {
+        name: "name",
+        type: "input",
+        message: "What is the engineer's name?"
+    },
+    {
+        name: "id",
+        type: "input",
+        message: "What is their employee ID?",
+    },
+    {
+        name: "email",
+        type: "input",
+        message: "What is the engineer's email?",
+    },
+    {
+        name: "github",
+        type: "input",
+        message: "What is their GitHub username?"
+    }
+]
+
+const internQuestions = [
+    {
+        name: "name",
+        type: "input",
+        message: "What is the Intern's name?"
+    },
+    {
+        name: "id",
+        type: "input",
+        message: "What is their employee ID?",
+    },
+    {
+        name: "email",
+        type: "input",
+        message: "What is the intern's email?",
+    },
+    {
+        name: "school",
+        type: "input",
+        message: "What school do they attend?"
+    },
+]
+
+
+
+let managerCard = generateManager((userAnswers) => {
+    return `
+    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px">
+            <div style="padding: 15px; border-radius: 2px 2px 0px 0px;" class="card-body bg-primary">
+                <div style="text-align: center" class="header-container bg-primary text-light">
+                    <h5 class="card-title bg-primary text-light">${userAnswers.name}</h5>
+                    <h6 class="card-subtitle mb-2 bg-primary text-light">Manager</h6>
+                </div>
+                
+            </div>
+            <div style="margin-left: 20px; margin-right: 20px; margin-top: 35px; margin-bottom: 35px; border: 1px solid lightgray;" class="info-container">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${userAnswers.id}</li>
+                    <li class="list-group-item">Email: ${userAnswers.email}</li>
+                    <li class="list-group-item">Office #: ${userAnswers.office}</li>
+              </ul>
+            </div>  
+          </div>
+    `
+})
+
+
+//function to render the HTML page
 let employeeCard = "";
 function renderHTML(data) {
     return `
@@ -19,9 +125,10 @@ function renderHTML(data) {
           <h1 style="font-weight: bolder" class="display-4">Our Team</h1>
           <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
         </div>
-      </div>
+    </div>
+    <div class="container card-container row" style="justify-content: center; margin: auto;">
         ${data}
-      </div>
+    </div>
     
 
 </body>
@@ -29,26 +136,13 @@ function renderHTML(data) {
     `
 }
 
-employeeQuestions = [
-    {
-        name: "name",
-        type: "input",
-        message: "What is the employee's name?"
-    },
-    {
-       name: "title",
-       type: "list",
-       message: "What is the employee's job title", 
-       choices: ["Manager", "Engineer", "Inter"]
-    },
-    {
-        name: "email",
-        type: "input",
-        message: "What is the employee's email?",
-    },
-    {
-        name: "github",
-        type: "id",
-        message: "What is their employee ID?",
-    }
-]
+//Function to begin generating webpage
+function generateProfile() {
+    inquirer.prompt(managerQuestions)
+    .then ((answers) => {
+        generateManager(answers)
+        managerCard
+    })
+}   
+
+generateProfile()
