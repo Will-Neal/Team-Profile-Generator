@@ -2,6 +2,12 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 
+//Import classes
+const Employee = require('./lib/employee');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+
 //Question arrays for enquirer
 const managerQuestions = [
     {
@@ -40,7 +46,7 @@ const menuQuestion = [
         name: "employee",
         type: "list",
         message: "what type of employee would you like to add?",
-        choices: ["Engineer", "Intern", "None"],
+        choices: ["Engineer", "Intern", "Manager", "None"],
     }
 ]
 
@@ -200,7 +206,14 @@ function generateCards() {
                 inquirer.prompt(internQuestions)
                 .then((internAnswers) => {
                     newInternCard = generateIntern(internAnswers);
-                    employeeCard += newInternCard
+                    employeeCard += newInternCard;
+                    generateCards()
+                })
+            } else if (menuQuestion.employee === "Manager") {
+                inquirer.prompt(managerQuestions)
+                .then((managerAnswers) => {
+                    newManagerCard = generateManager(managerAnswers);
+                    employeeCard += newManagerCard;
                     generateCards()
                 })
             } else {
@@ -215,6 +228,7 @@ function generateCards() {
         })
 }
 
+//Main function that creates the original manager card and then calls the function to generate the rest of the cards.
 function generateProfile() {
     inquirer.prompt(managerQuestions)
     .then ((answers) => {
