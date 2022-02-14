@@ -44,7 +44,7 @@ describe("Intern Class", () => {
     })
     describe('getRole() method', () => {
         it("should return Intern overriding Employee", () => {
-            const intern = new Intern("Ian", "Wesleyan", 6, "ian@unpaidintern.com");
+            const intern = new Intern("Ian", "Wesleyan", 7, "ian@unpaidintern.com");
             role = intern.getRole();
             expect(role).toBe("Intern")
         })

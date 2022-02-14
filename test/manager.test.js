@@ -35,4 +35,18 @@ describe("Manager Class", () => {
             expect(manager.email).toBe("lena@uppermanagement.com")
         })
     })
+    describe('getOfficeNumber() method', () => {
+        it("should return the office number passed in when creating the manager object", () => {
+            const manager = new Manager("Alex", "555-555-5555", 6, "alex@uppermanagement.com");
+            officeNum = manager.getOfficeNumber();
+            expect(officeNum).toBe("555-555-5555")
+        })
+    })
+    describe('getRole() method', () => {
+        it("should return Manager overriding Employee", () => {
+            const manager = new Manager("Alex", "555-555-5555", 7, "alex@uppermanagement.com");
+            role = manager.getRole();
+            expect(role).toBe("Manager")
+        })
+    })
 })
