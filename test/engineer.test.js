@@ -4,14 +4,14 @@ const Engineer = require('../lib/engineer')
 describe("Engineer Class", () => {
     describe('github property creation', () => {
         it("should create a property with the github username value passed in", ()=>{
-            const engineer = new Engineer("Sam", "sam-github", 5, "sam@management.com");
+            const engineer = new Engineer("Sam", "sam-github", 5, "sam@engineering.com");
             expect(engineer.github).toBe("sam-github")
         });
         
     });
     describe('name property creation', () => {
         it("should create a property with the name value passed in", ()=>{
-            const engineer = new Engineer("Tom", "tom-github", 1, "tom@management.com");
+            const engineer = new Engineer("Tom", "tom-github", 1, "tom@engineering.com");
             expect(engineer.name).toBe("Tom")
         });
         
@@ -25,14 +25,14 @@ describe("Engineer Class", () => {
     })
     describe('id property creation', () => {
         it("should create a property with the id number passed in", () => {
-            const engineer = new Engineer("Sasha", "sasha-github", 3, "sasha@unpaidintern.com");
+            const engineer = new Engineer("Sasha", "sasha-github", 3, "sasha@engineering.com");
             expect(engineer.id).toBe(3)
         })
     })
     describe('email property creation', () => {
         it("should create a property with the email address passed in", () => {
-            const engineer = new Engineer("Lena", "lena-github", 4, "lena@uppermanagement.com");
-            expect(engineer.email).toBe("lena@uppermanagement.com")
+            const engineer = new Engineer("Lena", "lena-github", 4, "lena@engineering.com");
+            expect(engineer.email).toBe("lena@engineering.com")
         })
     })
 })
