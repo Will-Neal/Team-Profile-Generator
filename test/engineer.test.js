@@ -35,4 +35,18 @@ describe("Engineer Class", () => {
             expect(engineer.email).toBe("lena@engineering.com")
         })
     })
+    describe('getGithub() method', () => {
+        it("should return the GitHub username passed in when creating the engineer object", () => {
+            const engineer = new Engineer("Alex", "alex-github", 6, "alex@engineering.com");
+            github = engineer.getGithub();
+            expect(github).toBe("alex-github")
+        })
+    })
+    describe('getRole() method', () => {
+        it("should return Engineer overriding Employee", () => {
+            const engineer = new Engineer("Ian", "ian-github", 7, "ian@engineering.com");
+            role = engineer.getRole();
+            expect(role).toBe("Engineer")
+        })
+    })
 })
