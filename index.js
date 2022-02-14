@@ -26,6 +26,15 @@ const managerQuestions = [
     },
 ]
 
+const anotherEmployee = [
+    {
+        name: "another",
+        type: "list",
+        message: "Would you like to add another employee?",
+        choices: ["Yes","No"]
+    }
+]
+
 const menuQuestion = [
     {
         name: "employee",
@@ -111,7 +120,7 @@ function renderHTML(data) {
     `
 }
 
-
+//Functions to generate the card for a manager or whatever other position is chosen
 function generateManager(userAnswers) {
     return `
     <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px">
@@ -133,34 +142,86 @@ function generateManager(userAnswers) {
     `
 }
 
+function generateEngineer(userAnswers) {
+    return `
+    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px">
+            <div style="padding: 15px; border-radius: 2px 2px 0px 0px;" class="card-body bg-primary">
+                <div style="text-align: center" class="header-container bg-primary text-light">
+                    <h5 class="card-title bg-primary text-light">${userAnswers.name}</h5>
+                    <h6 class="card-subtitle mb-2 bg-primary text-light">Engineer</h6>
+                </div>
+                
+            </div>
+            <div style="margin-left: 20px; margin-right: 20px; margin-top: 35px; margin-bottom: 35px; border: 1px solid lightgray;" class="info-container">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${userAnswers.id}</li>
+                    <li class="list-group-item">Email: ${userAnswers.email}</li>
+                    <li class="list-group-item">GitHub: ${userAnswers.github}</li>
+              </ul>
+            </div>  
+          </div>
+    `
+}
 
+function generateIntern(userAnswers) {
+    return `
+    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px">
+            <div style="padding: 15px; border-radius: 2px 2px 0px 0px;" class="card-body bg-primary">
+                <div style="text-align: center" class="header-container bg-primary text-light">
+                    <h5 class="card-title bg-primary text-light">${userAnswers.name}</h5>
+                    <h6 class="card-subtitle mb-2 bg-primary text-light">Intern</h6>
+                </div>
+                
+            </div>
+            <div style="margin-left: 20px; margin-right: 20px; margin-top: 35px; margin-bottom: 35px; border: 1px solid lightgray;" class="info-container">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${userAnswers.id}</li>
+                    <li class="list-group-item">Email: ${userAnswers.email}</li>
+                    <li class="list-group-item">School: ${userAnswers.school}</li>
+              </ul>
+            </div>  
+          </div>
+    `
+}
 
 
 //Function to begin generating webpage
-function generateProfile() {
-    inquirer.prompt(managerQuestions)
-    .then ((answers) => {
-        managerCard = generateManager(answers)
-        console.log("Manger card: " + managerCard)
-        employeeCard += managerCard
-        inquirer.prompt(menuQuestion)
+function generateCards() {
+    inquirer.prompt(menuQuestion)
         .then ((menuQuestion) => {
             if (menuQuestion.employee === "Engineer") {
-                console.log("You have selected Engineer")
+                inquirer.prompt(engineerQuestions)
+                .then((engineerAnswers) => {
+                    newEngineerCard =  generateEngineer(engineerAnswers);
+                    employeeCard += newEngineerCard;
+                    generateCards()
+                })
             } else if (menuQuestion.employee === "Intern") {
-                console.log("You have selected Intern")
+                inquirer.prompt(internQuestions)
+                .then((internAnswers) => {
+                    newInternCard = generateIntern(internAnswers);
+                    employeeCard += newInternCard
+                    generateCards()
+                })
             } else {
-                fs.writeFile("test.html", renderHTML(employeeCard), (err) => {
+                fs.writeFile("dist/test.html", renderHTML(employeeCard), (err) => {
                     if(err) {
                         console.error(err);
                         return;
                     } 
-
                     console.log("File written successfully")
                 })
             }
         })
-        
+}
+
+function generateProfile() {
+    inquirer.prompt(managerQuestions)
+    .then ((answers) => {
+        managerCard = generateManager(answers);
+        console.log("Manger card: " + managerCard);
+        employeeCard += managerCard;
+        generateCards()
     })
     
 }   
