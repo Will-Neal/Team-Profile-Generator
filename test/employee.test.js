@@ -27,4 +27,32 @@ describe("Employee Class", () => {
             expect(employee.email).toBe("lena@uppermanagement.com")
         })
     })
+    describe('getName() method', () => {
+        it("should return the name passed in when creating the employee object", () => {
+            const employee = new Employee("Alex", "Intern", 6, "alex@unpaidintern.com");
+            employeeName = employee.getName();
+            expect(employeeName).toBe("Alex")
+        })
+    })
+    describe('getId() method', () => {
+        it("should return the ID passed in when creating the employee object", () => {
+            const employee = new Employee("Alex", "Intern", 6, "alex@unpaidintern.com");
+            id = employee.getId();
+            expect(id).toBe(6)
+        })
+    })
+    describe('getEmail() method', () => {
+        it("should return the email passed in when creating the employee object", () => {
+            const employee = new Employee("Alex", "Intern", 6, "alex@unpaidintern.com");
+            email = employee.getEmail();
+            expect(email).toBe("alex@unpaidintern.com")
+        })
+    })
+    describe('getRole() method', () => {
+        it("should return Employee later to be overwritten by what is passed in through child objects", () => {
+            const employee = new Employee("Ian", "Wesleyan", 7, "ian@unpaidintern.com");
+            role = employee.getRole();
+            expect(role).toBe("Employee")
+        })
+    })
 })
