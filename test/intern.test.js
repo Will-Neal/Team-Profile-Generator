@@ -35,4 +35,18 @@ describe("Intern Class", () => {
             expect(intern.email).toBe("lena@unpaidintern.com")
         })
     })
+    describe('getSchool() method', () => {
+        it("should return the school passed in when creating the intern object", () => {
+            const intern = new Intern("Alex", "University of Texas", 6, "alex@unpaidintern.com");
+            school = intern.getSchool();
+            expect(school).toBe("University of Texas")
+        })
+    })
+    describe('getRole() method', () => {
+        it("should return Intern overriding Employee", () => {
+            const intern = new Intern("Ian", "Wesleyan", 6, "ian@unpaidintern.com");
+            role = intern.getRole();
+            expect(role).toBe("Intern")
+        })
+    })
 })
