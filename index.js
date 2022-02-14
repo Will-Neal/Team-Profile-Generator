@@ -244,5 +244,5 @@ function generateProfile() {
     })
     
 }   
-
+//Function call to initialize application
 generateProfile()
