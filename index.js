@@ -195,24 +195,29 @@ function generateIntern(userAnswers) {
 function generateCards() {
     inquirer.prompt(menuQuestion)
         .then ((menuQuestion) => {
+
+            //trying to make only engineer work with class at first
             if (menuQuestion.employee === "Engineer") {
                 inquirer.prompt(engineerQuestions)
                 .then((engineerAnswers) => {
-                    newEngineerCard =  generateEngineer(engineerAnswers);
+                    const engineerObject = new Engineer(engineerAnswers.name, engineerAnswers.github, engineerAnswers.id, engineerAnswers.email)
+                    newEngineerCard =  generateEngineer(engineerObject);
                     employeeCard += newEngineerCard;
                     generateCards()
                 })
             } else if (menuQuestion.employee === "Intern") {
                 inquirer.prompt(internQuestions)
                 .then((internAnswers) => {
-                    newInternCard = generateIntern(internAnswers);
+                    const internObject = new Intern(internAnswers.name, internAnswers.school, internAnswers.id, internAnswers.email)
+                    newInternCard = generateIntern(internObject);
                     employeeCard += newInternCard;
                     generateCards()
                 })
             } else if (menuQuestion.employee === "Manager") {
                 inquirer.prompt(managerQuestions)
                 .then((managerAnswers) => {
-                    newManagerCard = generateManager(managerAnswers);
+                    const managerObject = new Manager(managerAnswers.name, managerAnswers.office, managerAnswers.id, managerAnswers.email)
+                    newManagerCard = generateManager(managerObject);
                     employeeCard += newManagerCard;
                     generateCards()
                 })
@@ -232,8 +237,8 @@ function generateCards() {
 function generateProfile() {
     inquirer.prompt(managerQuestions)
     .then ((answers) => {
-        managerCard = generateManager(answers);
-        console.log("Manger card: " + managerCard);
+        const managerObject = new Manager(answers.name, answers.office, answers.id, answers.email)
+        managerCard = generateManager(managerObject);
         employeeCard += managerCard;
         generateCards()
     })
