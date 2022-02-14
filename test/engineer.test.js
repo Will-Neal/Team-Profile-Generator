@@ -17,7 +17,7 @@ describe("Engineer Class", () => {
         
     });
     describe('title property creation', () => {
-        it("should create a property with the title property passed in", () => {
+        it("should inherit a property title with value Engineer without the title property needing to be passed in", () => {
             const engineer = new Engineer("Larry", "larry-github", 2, "larry@engineering.com");
             expect(engineer.title).toBe("Engineer")
         });
