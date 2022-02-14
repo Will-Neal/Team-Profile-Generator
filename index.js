@@ -8,7 +8,7 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
-//Question arrays for enquirer
+//Question arrays for inquirer
 const managerQuestions = [
     {
         name: "name",
@@ -129,7 +129,7 @@ function renderHTML(data) {
 //Functions to generate the card for a manager or whatever other position is chosen
 function generateManager(userAnswers) {
     return `
-    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px">
+    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px; box-shadow: 5px 5px 10px #888888">
             <div style="padding: 15px; border-radius: 2px 2px 0px 0px;" class="card-body bg-primary">
                 <div style="text-align: center" class="header-container bg-primary text-light">
                     <h5 class="card-title bg-primary text-light">${userAnswers.name}</h5>
@@ -150,7 +150,7 @@ function generateManager(userAnswers) {
 
 function generateEngineer(userAnswers) {
     return `
-    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px">
+    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px; box-shadow: 5px 5px 10px #888888">
             <div style="padding: 15px; border-radius: 2px 2px 0px 0px;" class="card-body bg-primary">
                 <div style="text-align: center" class="header-container bg-primary text-light">
                     <h5 class="card-title bg-primary text-light">${userAnswers.name}</h5>
@@ -171,7 +171,7 @@ function generateEngineer(userAnswers) {
 
 function generateIntern(userAnswers) {
     return `
-    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px">
+    <div class="card" style="width: 18rem; border: 0px; border: 3px solid lightgrey; margin: 30px; box-shadow: 5px 5px 10px #888888">
             <div style="padding: 15px; border-radius: 2px 2px 0px 0px;" class="card-body bg-primary">
                 <div style="text-align: center" class="header-container bg-primary text-light">
                     <h5 class="card-title bg-primary text-light">${userAnswers.name}</h5>
