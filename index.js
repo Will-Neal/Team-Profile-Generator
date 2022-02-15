@@ -140,7 +140,7 @@ function generateManager(userAnswers) {
             <div style="margin-left: 20px; margin-right: 20px; margin-top: 35px; margin-bottom: 35px; border: 1px solid lightgray;" class="info-container">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${userAnswers.id}</li>
-                    <li class="list-group-item">Email: ${userAnswers.email}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${userAnswers.email}" target="_blank">${userAnswers.email}</a></li>
                     <li class="list-group-item">Office #: ${userAnswers.office}</li>
               </ul>
             </div>  
@@ -161,8 +161,8 @@ function generateEngineer(userAnswers) {
             <div style="margin-left: 20px; margin-right: 20px; margin-top: 35px; margin-bottom: 35px; border: 1px solid lightgray;" class="info-container">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${userAnswers.id}</li>
-                    <li class="list-group-item">Email: ${userAnswers.email}</li>
-                    <li class="list-group-item">GitHub: ${userAnswers.github}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${userAnswers.email}" target="_blank">${userAnswers.email}</a></li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${userAnswers.github}" target="_blank">${userAnswers.github}</a></li>
               </ul>
             </div>  
           </div>
@@ -182,7 +182,7 @@ function generateIntern(userAnswers) {
             <div style="margin-left: 20px; margin-right: 20px; margin-top: 35px; margin-bottom: 35px; border: 1px solid lightgray;" class="info-container">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${userAnswers.id}</li>
-                    <li class="list-group-item">Email: ${userAnswers.email}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${userAnswers.email}" target="_blank">${userAnswers.email}</a></li>
                     <li class="list-group-item">School: ${userAnswers.school}</li>
               </ul>
             </div>  
