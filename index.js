@@ -222,7 +222,7 @@ function generateCards() {
                     generateCards()
                 })
             } else {
-                fs.writeFile("dist/test.html", renderHTML(employeeCard), (err) => {
+                fs.writeFile("dist/index.html", renderHTML(employeeCard), (err) => {
                     if(err) {
                         console.error(err);
                         return;
