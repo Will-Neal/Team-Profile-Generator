@@ -40,7 +40,7 @@
 
   ## Tests
 
-    Several tests have been performed and can be utilized by the user. There are four testing suites, one for each class of intern, engineer and manager as well as one for the parent class of Employee. These tests test the integrity of the constructor to confirm that objects are being correctly created according to their class and test the functions that are associated with every class. To run the tests call npm run test. If you would like to only test a single class use npm run test "class name", where the class name is lower case, i.e. employee or intern.
+  Several tests have been performed and can be utilized by the user. There are four testing suites, one for each class of intern, engineer and manager as well as one for the parent class of Employee. These tests test the integrity of the constructor to confirm that objects are being correctly created according to their class and test the functions that are associated with every class. To run the tests call npm run test. If you would like to only test a single class use npm run test "class name", where the class name is lower case, i.e. employee or intern.
 
   ## Questions
   
