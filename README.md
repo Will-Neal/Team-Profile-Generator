@@ -21,6 +21,8 @@
 
   [For video demonstrating usage, click here](https://drive.google.com/file/d/1lGQWt2s7SMQHjtAjTA385gCE54nylfiu/view)
 
+  ![Screenshot of application](https://github.com/Will-Neal/Team-Profile-Generator/blob/main/assets/application-screenshot.jpg?raw=true)
+
   ## License
 
   ![License Badge](https://img.shields.io/badge/license-MIT-orange?style=plastic=appveyor?raw=true)
